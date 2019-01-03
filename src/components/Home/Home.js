@@ -13,9 +13,10 @@ export default class Home extends Component {
           <Bookshelves />
         </div>
         <div className="open-search">
-        <Link
-          to='/create'
-        >Add a book</Link>
+        <button
+          to='/search'
+          className="btn-search"
+        >Add a book</button>
         </div>
       </div>
     )
