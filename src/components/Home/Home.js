@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Bookshelves from '../Bookshelves/Bookshelves';
 
 export default class Home extends Component {
@@ -12,7 +13,9 @@ export default class Home extends Component {
           <Bookshelves />
         </div>
         <div className="open-search">
-          <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+        <Link
+          to='/create'
+        >Add a book</Link>
         </div>
       </div>
     )
