@@ -108,9 +108,13 @@ body, .app {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 28px;
+  background-color: #dedede;
   font-size: 0;
   border: none;
   outline: none;
+} 
+.search-books-bar .close-search:hover {
+  background-image: #646;
 }
 
 button:active {

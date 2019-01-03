@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Bookshelf from './Bookshelf';
 
-export default class Bookshelves extends Component {
-  render() {
+const Bookshelves = (props) => {
     return (
       <div>
         <Bookshelf/>
@@ -112,5 +111,6 @@ export default class Bookshelves extends Component {
         </div>
       </div>
     )
-  }
 }
+
+export default Bookshelves;
