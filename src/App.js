@@ -1,27 +1,64 @@
 import React from 'react';
-import {Route} from 'react-router-dom'
-// import * as BooksAPI from './BooksAPI'
+import { Route } from 'react-router-dom';
+import * as BooksAPI from './apis/BooksAPI'
 import './App.css';
 
 import Home from './components/Home/Home';
 import Search from './components/Search/Search';
 
 class BooksApp extends React.Component {
+
   state = {
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-   // showSearchPage: false
+    booksList : [],
+    book : null,
   }
+
+  //TODO: monta lista com todos os livros recuperados na API
+  componentDidMount(){
+    BooksAPI.getAll()
+      .then((bookList) => {
+        this.updateStateBookList(bookList)
+      })
+  }
+
+  //TODO: atualiza o licro recebido (book) na lista de livros (bookList)
+  updateBookShelf = (book) => {
+    this.searchBookByID(book.id)
+  };
+
+  //TODO: busca livro específico pela ID
+  searchBookByID = (id) => {
+    BooksAPI.get('nggnmAEACAAJ')
+    .then((book) => {
+      this.updateStateBook(book)
+    })
+  };
+
+  //TODO: Atualiza o state 'library' com o array de books recebido
+  updateStateBookList = (bookList) => (
+    this.setState(() => ({bookList}))
+  );
+
+  //TODO: Atualiza o state 'book' com o book recebido
+  updateStateBook = (book) => (
+    this.setState(() => ({book}))
+  );
 
   render() {
     return (
       <div className="app">
-        <Route exact path='/' component={Home}/>
-        <Route path='/search' component={Search} />
+        <Route exact path='/' render={() => (
+          <Home
+            books={this.state.bookList}
+            updateBookShelf={this.updateBookShelf}
+          />
+        )} />
+        <Route path='/search' render={() => (
+          <Search
+          books={this.state.books}
+          updateBookShelf={this.updateBookShelf}
+          />
+        )} />
       </div>
     )
   }
