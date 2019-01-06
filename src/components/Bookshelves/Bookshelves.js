@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Bookshelf from './Bookshelf';
 
 const Bookshelves = (props) => {
@@ -6,9 +6,9 @@ const Bookshelves = (props) => {
   const { bookList, updateBookShelf } = props;
 
   const shelves = [
-    {id : 0, name : 'Currently Reading'},
-    {id : 1, name : 'Want to Read'},
-    {id : 2, name : 'Read'},
+    {id : 0, name : 'Currently Reading', ref : 'currentlyReading'},
+    {id : 1, name : 'Want to Read', ref : 'wantToRead'},
+    {id : 2, name : 'Read', ref : 'read'},
   ];
 
   return (
@@ -16,12 +16,10 @@ const Bookshelves = (props) => {
       {shelves.map(shelf => (
         <div key={shelf.id} className="bookshelf">
           <h2 className="bookshelf-title">{shelf.name}</h2>
-          <div className="bookshelf-books">
             <Bookshelf
-              bookList={() => bookList.filter(book => book.shelf === shelf)}
+              bookList={bookList.filter(book => book.shelf === shelf.ref)}
               updateBookShelf={updateBookShelf}
             />
-          </div>
         </div>
       ))}
     </div>
