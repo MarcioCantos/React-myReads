@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Book = (props) => {
 
-  const {book} = props;
+  //set state
+  const [shelf, setShelf] = useState(props.book.shelf)
+
+  const {book, updateBookShelf} = props;
+
+  function handleChange(e) {
+    book.shelf = e
+    updateBookShelf(book);
+    setShelf(e);
+  }
 
   return (
     <div className="book">
       <div className="book-top">
         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
         <div className="book-shelf-changer">
-          <select>
+          <select value={shelf} onChange={e => handleChange(e.target.value)}>
             <option value="move" disabled>Move to...</option>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>

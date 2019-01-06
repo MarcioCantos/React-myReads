@@ -21,6 +21,7 @@ export default function BooksApp() {
 
   //TODO: atualiza o livro recebido (book) na lista de livros (bookList)
   const updateBookShelf = (updatedBook) => {
+    console.log(updatedBook)
     setBookList(bookList.map(book => book.id === updatedBook.id ? updatedBook : book));
     BooksAPI.update(updatedBook.id, updatedBook.shelf)
   };

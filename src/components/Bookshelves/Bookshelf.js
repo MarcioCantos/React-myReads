@@ -1,9 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Book from './Book';
 
 const Bookshelf = (props) => {
 
+  //set state
+  const [loading, setLoading] = useState('Loading...')
+
   const { bookList, updateBookShelf } = props;
+
+  useEffect(() =>{
+    return (()=> setLoading('Bookshelf empty'))
+  }, [])
 
   console.log('bookshelf: ', bookList)
     return (
@@ -13,12 +20,12 @@ const Bookshelf = (props) => {
             <ol className="books-grid">
               {bookList.map((book) => (
                   <li key={book.id}>
-                    <Book book={book}/>
+                    <Book book={book} updateBookShelf={updateBookShelf}/>
                   </li>
               ))}
             </ol>
           ) : (
-            'Bookshelf empty'
+            loading
           )
         }
       </div>
