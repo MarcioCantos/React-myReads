@@ -3,7 +3,7 @@ import Bookshelf from './Bookshelf';
 
 const Bookshelves = (props) => {
 
-  const { bookList, updateBookShelf } = props;
+  const { bookList, updateBookShelf, loading } = props;
 
   const shelves = [
     {id : 0, name : 'Currently Reading', ref : 'currentlyReading'},
@@ -20,6 +20,7 @@ const Bookshelves = (props) => {
             <Bookshelf
               bookList={bookList.filter(book => book.shelf === shelf.ref)}
               updateBookShelf={updateBookShelf}
+              loading={loading}
             />
         </div>
       ))}

@@ -11,11 +11,13 @@ export default function BooksApp() {
 
   // set States
   const [bookList, setBookList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   //TODO: monta a lista inicial
   useEffect(() => {
     BooksAPI.getAll().then((bookList) => {
       setBookList(bookList);
+      setLoading(false);
     });
   }, []);
 
@@ -32,6 +34,7 @@ export default function BooksApp() {
           <Home
             bookList={bookList}
             updateBookShelf={updateBookShelf}
+            loading={loading}
           />
         )}
       />
