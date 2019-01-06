@@ -9,6 +9,7 @@ const Bookshelves = (props) => {
     {id : 0, name : 'Currently Reading', ref : 'currentlyReading'},
     {id : 1, name : 'Want to Read', ref : 'wantToRead'},
     {id : 2, name : 'Read', ref : 'read'},
+    {id : 3, name : 'Without Classification', ref : 'none'},
   ];
 
   return (
