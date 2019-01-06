@@ -29,7 +29,7 @@ export default function BooksApp() {
     <div className="app">
       <Route exact path='/' render={() => (
           <Home
-            books={bookList}
+            bookList={bookList}
             updateBookShelf={updateBookShelf}
           />
         )}

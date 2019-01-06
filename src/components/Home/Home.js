@@ -1,13 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import Bookshelves from '../Bookshelves/Bookshelves';
 
 const Home = (props) => {
+
   Home.propTypes = {
+    bookList: PropTypes.array.isRequired,
+    updateBookShelf: PropTypes.func.isRequired
+  }
 
-  };
-
-  console.log(props.books);
+  const { bookList, updateBookShelf } = props
 
   return (
     <div className="list-books">
@@ -15,7 +18,10 @@ const Home = (props) => {
         <h1>MyReads</h1>
       </div>
       <div className="list-books-content">
-        <Bookshelves />
+        <Bookshelves
+          bookList={bookList}
+          updateBookShelf={updateBookShelf}
+        />
       </div>
       <div className="open-search">
       <Link
