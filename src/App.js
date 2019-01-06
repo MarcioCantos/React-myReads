@@ -1,67 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import * as BooksAPI from './apis/BooksAPI'
 import './App.css';
 
+// Components
 import Home from './components/Home/Home';
 import Search from './components/Search/Search';
 
-class BooksApp extends React.Component {
+export default function BooksApp() {
 
-  state = {
-    booksList : [],
-    book : null,
-  }
+  // set States
+  const [bookList, setBookList] = useState([]);
 
-  //TODO: monta lista com todos os livros recuperados na API
-  componentDidMount(){
-    BooksAPI.getAll()
-      .then((bookList) => {
-        this.updateStateBookList(bookList)
-      })
-  }
+  //TODO: monta a lista inicial
+  useEffect(() => {
+    BooksAPI.getAll().then((bookList) => {
+      setBookList(bookList);
+    });
+  }, []);
 
-  //TODO: atualiza o licro recebido (book) na lista de livros (bookList)
-  updateBookShelf = (book) => {
-    this.searchBookByID(book.id)
+  //TODO: atualiza o livro recebido (book) na lista de livros (bookList)
+  const updateBookShelf = (updatedBook) => {
+    setBookList(bookList.map(book => book.id === updatedBook.id ? updatedBook : book));
+    BooksAPI.update(updatedBook.id, updatedBook.shelf)
   };
 
-  //TODO: busca livro específico pela ID
-  searchBookByID = (id) => {
-    BooksAPI.get('nggnmAEACAAJ')
-    .then((book) => {
-      this.updateStateBook(book)
-    })
-  };
-
-  //TODO: Atualiza o state 'library' com o array de books recebido
-  updateStateBookList = (bookList) => (
-    this.setState(() => ({bookList}))
-  );
-
-  //TODO: Atualiza o state 'book' com o book recebido
-  updateStateBook = (book) => (
-    this.setState(() => ({book}))
-  );
-
-  render() {
-    return (
-      <div className="app">
-        <Route exact path='/' render={() => (
+  return (
+    <div className="app">
+      <Route exact path='/' render={() => (
           <Home
-            books={this.state.bookList}
-            updateBookShelf={this.updateBookShelf}
+            books={bookList}
+            updateBookShelf={updateBookShelf}
           />
-        )} />
-        <Route path='/search' render={() => (
+        )}
+      />
+      <Route path='/search' render={() => (
           <Search
-          books={this.state.books}
-          updateBookShelf={this.updateBookShelf}
+          books={bookList}
+          updateBookShelf={updateBookShelf}
           />
-        )} />
-      </div>
-    )
-  }
+        )}
+      />
+    </div>
+  )
 }
-
-export default BooksApp;

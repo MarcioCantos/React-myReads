@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 import Bookshelves from '../Bookshelves/Bookshelves';
 
 const Home = (props) => {
+  Home.propTypes = {
 
-  console.log(props.books)
-  
+  };
+
+  console.log(props.books);
+
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -23,5 +26,4 @@ const Home = (props) => {
     </div>
   )
 }
-
 export default Home;
