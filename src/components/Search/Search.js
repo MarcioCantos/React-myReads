@@ -78,15 +78,12 @@ export default function Search(props) {
         </div>
       </div>
       <div className="search-books-results">
-
       {error && (
         <div>
           <h2>Termo de busca inválido. Désolé...</h2>
         </div>
       )}
-
       {isLoading ? 'Loading...' : (
-
         <ol className="books-grid">
           {(listResult.length > 0 && bookName !== '') && (
             listResult.map((book) => (
@@ -99,7 +96,6 @@ export default function Search(props) {
             ))
           )}
         </ol>
-
       )}
       </div>
     </div>

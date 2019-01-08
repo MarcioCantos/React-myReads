@@ -12,7 +12,7 @@ const Home = (props) => {
     updateBookShelf: PropTypes.func.isRequired
   }
 
-  const { bookList, updateBookShelf, loading } = props
+  const { bookList, updateBookShelf, loading } = props;
 
   return (
     <div className="list-books">

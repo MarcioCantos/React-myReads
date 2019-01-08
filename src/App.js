@@ -10,29 +10,25 @@ import Search from './components/Search/Search';
 export default function App() {
 
   // set States
-  const [bookList, setBookList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const lista = useListBook();
 
   //TODO: monta a lista inicial
   useEffect(() => {
-    BooksAPI.getAll().then((bookList) => {
-      console.log('recarreguei')
-      setBookList(bookList);
-      setLoading(false);
-    });
+    return setLoading(false);
   }, []);
 
   //TODO: atualiza o livro recebido (book) na prateleira (bookList)
   const updateBookShelf = (updatedBook) => {
     BooksAPI.update(updatedBook, updatedBook.shelf)
-    .then(setBookList(bookList.map(book => book.id === updatedBook.id ? updatedBook : book)));
+    .then( () => lista );
   };
 
   return (
     <div className="app">
       <Route exact path='/' render={() => (
           <Home
-            bookList={bookList}
+            bookList={lista}
             updateBookShelf={updateBookShelf}
             loading={loading}
           />
@@ -49,4 +45,16 @@ export default function App() {
       />
     </div>
   )
+}
+
+function useListBook() {
+
+  const [bookList, setBookList] = useState([])
+  useEffect(() => {
+    BooksAPI.getAll().then((bookList) => {
+      setBookList(bookList);
+    });
+  });
+
+  return bookList;
 }
