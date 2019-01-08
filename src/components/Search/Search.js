@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as BooksAPI from '../../apis/BooksAPI';
 
 //components
 import Book from '../Bookshelves/Book'
 
 export default function Search(props) {
+
+  Search.propTypes = {
+    updateBookShelf: PropTypes.func.isRequired
+  }
+
   //set state / Hooks  / props
   const [bookName, setBookName] = useState('');
   const [listResult, setListResult] = useState([]);

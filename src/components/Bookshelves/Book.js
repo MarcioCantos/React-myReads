@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Book = (props) => {
 
-  //set state
+  Book.propTypes = {
+    book: PropTypes.object.isRequired,
+    updateBookShelf: PropTypes.func.isRequired,
+  }
+
+  //set state / props
   const [shelf, setShelf] = useState(props.book.shelf)
   const {book, updateBookShelf} = props;
 
