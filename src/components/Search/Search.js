@@ -32,12 +32,8 @@ export default function Search(props) {
           setError(false);
         }
       }, delay);
-
-      return () => {
-        clearTimeout(handler);
-      };
-    },
-    [bookName, delay]
+      return () => clearTimeout(handler);
+    }, [bookName, delay]
   );
 
   function handleInputChange(e){
@@ -46,11 +42,12 @@ export default function Search(props) {
 
   // TODO: retorna um array com o resultado da busca
   const updateBookList = () => {
+    setListResult([]);
      BooksAPI.search(bookName)
       .then((result) =>  {
         result.error ? setError(true) : listVerified(result);
         setIsLoading(false);
-      });
+      })
   }
 
   // TODO: Recupera a categoria (prateleira) dos livros.

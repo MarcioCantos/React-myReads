@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import * as BooksAPI from './apis/BooksAPI'
+import * as BooksAPI from './apis/BooksAPI';
 import './App.css';
 
 // Components
@@ -16,6 +16,7 @@ export default function App() {
   //TODO: monta a lista inicial
   useEffect(() => {
     BooksAPI.getAll().then((bookList) => {
+      console.log('recarreguei')
       setBookList(bookList);
       setLoading(false);
     });
@@ -23,9 +24,8 @@ export default function App() {
 
   //TODO: atualiza o livro recebido (book) na prateleira (bookList)
   const updateBookShelf = (updatedBook) => {
-
-    setBookList(bookList.map(book => book.id === updatedBook.id ? updatedBook : book));
-    BooksAPI.update(updatedBook.id, updatedBook.shelf)
+    BooksAPI.update(updatedBook, updatedBook.shelf)
+    .then(setBookList(bookList.map(book => book.id === updatedBook.id ? updatedBook : book)));
   };
 
   return (
@@ -38,8 +38,13 @@ export default function App() {
           />
         )}
       />
-      <Route path='/search' render={() => (
-          <Search updateBookShelf={updateBookShelf} />
+      <Route path='/search' render={({history}) => (
+          <Search
+            updateBookShelf={(book) => {
+              updateBookShelf(book);
+              history.push('/')
+            }}
+          />
         )}
       />
     </div>

@@ -14,8 +14,6 @@ const Bookshelf = (props) => {
 
   const { bookList, updateBookShelf, loading } = props;
 
-  console.log(loading)
-
   return (
     <div className="bookshelf-books">
       {bookList.length > 0

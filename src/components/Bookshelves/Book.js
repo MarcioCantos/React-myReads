@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Book = (props) => {
+export default function Book(props) {
 
   Book.propTypes = {
     book: PropTypes.object.isRequired,
@@ -11,6 +11,15 @@ const Book = (props) => {
   //set state / props
   const [shelf, setShelf] = useState(props.book.shelf)
   const {book, updateBookShelf} = props;
+  const URL_THUMBNAIL = 'http://books.google.com/books/content?printsec=frontcover&img=1&zoom=1&source=gbs_api';
+
+
+  const thumbnail = () => {
+    if(book.imageLinks === undefined) {
+      return URL_THUMBNAIL;
+    }
+    return book.imageLinks.thumbnail
+  }
 
   function handleChange(e) {
     book.shelf = e
@@ -18,12 +27,13 @@ const Book = (props) => {
     setShelf(e);
   }
 
+
   return (
     <div className="book">
       <div className="book-top">
-        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+        <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail()})` }}></div>
         <div className="book-shelf-changer">
-          <select value={shelf ? shelf : 'move'} onChange={e => handleChange(e.target.value)}>
+          <select value={shelf ? shelf : 'none'} onChange={e => handleChange(e.target.value)}>
             <option value="move" disabled>Move to...</option>
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>
@@ -44,5 +54,3 @@ const Book = (props) => {
     </div>
   )
 }
-
-export default Book;
