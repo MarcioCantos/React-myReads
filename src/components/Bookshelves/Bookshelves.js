@@ -1,7 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+// Components
 import Bookshelf from './Bookshelf';
 
 const Bookshelves = (props) => {
+
+  Bookshelves.propTypes = {
+    bookList: PropTypes.array.isRequired,
+    updateBookShelf: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+  }
 
   const { bookList, updateBookShelf, loading } = props;
 

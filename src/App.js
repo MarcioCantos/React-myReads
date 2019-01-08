@@ -7,7 +7,7 @@ import './App.css';
 import Home from './components/Home/Home';
 import Search from './components/Search/Search';
 
-export default function BooksApp() {
+export default function App() {
 
   // set States
   const [bookList, setBookList] = useState([]);
@@ -21,9 +21,9 @@ export default function BooksApp() {
     });
   }, []);
 
-  //TODO: atualiza o livro recebido (book) na lista de livros (bookList)
+  //TODO: atualiza o livro recebido (book) na prateleira (bookList)
   const updateBookShelf = (updatedBook) => {
-    console.log(updatedBook)
+
     setBookList(bookList.map(book => book.id === updatedBook.id ? updatedBook : book));
     BooksAPI.update(updatedBook.id, updatedBook.shelf)
   };
@@ -39,10 +39,7 @@ export default function BooksApp() {
         )}
       />
       <Route path='/search' render={() => (
-          <Search
-          books={bookList}
-          updateBookShelf={updateBookShelf}
-          />
+          <Search updateBookShelf={updateBookShelf} />
         )}
       />
     </div>

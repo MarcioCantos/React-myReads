@@ -1,8 +1,9 @@
 import React from 'react';
+
+// Components
 import Book from './Book';
 
 const Bookshelf = (props) => {
-
   const { bookList, updateBookShelf, loading } = props;
 
   console.log(loading)
