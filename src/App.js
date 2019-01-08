@@ -9,14 +9,9 @@ import Search from './components/Search/Search';
 
 export default function App() {
 
-  // set States
+  // set States and Hooks
   const [loading, setLoading] = useState(true);
   const lista = useListBook();
-
-  //TODO: monta a lista inicial
-  useEffect(() => {
-    return setLoading(false);
-  }, []);
 
   //TODO: atualiza o livro recebido (book) na prateleira (bookList)
   const updateBookShelf = (updatedBook) => {
