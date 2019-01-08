@@ -9,9 +9,8 @@ import Search from './components/Search/Search';
 
 export default function App() {
 
-  // set States and Hooks
-  const [loading, setLoading] = useState(true);
   const lista = useListBook();
+  const loading = (true);
 
   //TODO: atualiza o livro recebido (book) na prateleira (bookList)
   const updateBookShelf = (updatedBook) => {
@@ -42,8 +41,8 @@ export default function App() {
   )
 }
 
+// TODO: Carrega a lista de livros da API
 function useListBook() {
-
   const [bookList, setBookList] = useState([])
   useEffect(() => {
     BooksAPI.getAll().then((bookList) => {
@@ -52,4 +51,5 @@ function useListBook() {
   });
 
   return bookList;
+
 }
