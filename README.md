@@ -17,7 +17,7 @@ npm:
 
 ## Update
 
-As this is a * React Hooks * project, you will need be, at least, in react `"16.7.0-alpha.2"`, maybe an update would be necessary:
+As this is a ** React Hooks ** project, you will need be, at least, in react `"16.7.0-alpha.2"`, maybe an update would be necessary:
 
     $ yarn add react@next react-dom@next
 
