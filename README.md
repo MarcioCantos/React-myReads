@@ -1,10 +1,10 @@
 # MyReads
 
-This is a sinmple book app to keep your virtual library up to date. The application use goole book api to do a search and you will be able to add those books to your bookshelve (it could be 'Reading', 'Want to Read' and 'Read').
+This is a simple book app to keep my virtual library up to date. The application uses Goole Books API to do a search. You will be able to add those books to your bookshelve (it could be 'Reading', 'Want to Read' and 'Read').
 
 ## Install
 
-To get started you will need install it, for that use:
+To get started you will need install it:
 
 yarn:
 
@@ -21,8 +21,8 @@ As this is a * React Hooks * project, you will need be, at least, in react `"16.
 
     $ yarn add react@next react-dom@next
 
-## Starting it
-To run a development server, run:
+## Start
+To run a development server (live reloading in http://localhost:3000):
 
     $ npm start
 
