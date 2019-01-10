@@ -1,6 +1,6 @@
 # MyReads
 
-This is a sinmple book app to keep your virtual library up to date. The application use goole book api to do a search and you will be able to add those books to your bookshelve (it could be 'Reading', 'Want to Read' and 'Read').
+This is a simple book app to keep my virtual library up to date. The application uses Goole Books API to do a search. You will be able to add those books to your bookshelve (it could be 'Reading', 'Want to Read' and 'Read').
 
 ## Install
 
