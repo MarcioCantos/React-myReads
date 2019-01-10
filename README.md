@@ -4,7 +4,7 @@ This is a simple book app to keep my virtual library up to date. The application
 
 ## Install
 
-To get started you will need install it, for that use:
+To get started you will need install it:
 
 yarn:
 
@@ -21,8 +21,8 @@ As this is a * React Hooks * project, you will need be, at least, in react `"16.
 
     $ yarn add react@next react-dom@next
 
-## Starting it
-To run a development server, run:
+## Start
+To run a development server (live reloading in http://localhost:3000):
 
     $ npm start
 
