@@ -33,6 +33,4 @@ or
 
 # License
 
-The content of this repository is licensed under a MIT License.
-
-A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+The content of this repository is licensed under a [MIT License](https://github.com/MarcioCantos/React-myReads/blob/master/LICENSE).
